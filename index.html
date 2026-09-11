@@ -1,20 +1,562 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ezatullah Noori | Engineering Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #08111f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8, 17, 31, 0.95);
+            border-bottom: 1px solid #1d2b3f;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #d4dbe5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            max-width: 1150px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .small-title {
+            color: #38bdf8;
+            font-size: 15px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            color: #94a3b8;
+            font-size: clamp(22px, 4vw, 38px);
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #b7c1cf;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #38bdf8;
+            color: #06111f;
+        }
+
+        .secondary {
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* GENERAL */
+
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            font-size: 34px;
+            margin-bottom: 35px;
+        }
+
+        .section-title span {
+            color: #38bdf8;
+        }
+
+        /* ABOUT */
+
+        .about p {
+            color: #b7c1cf;
+            max-width: 850px;
+            font-size: 17px;
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: #101c2d;
+            border: 1px solid #1e3047;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #38bdf8;
+        }
+
+        .project-image {
+            height: 190px;
+            background: #15253a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-size: 15px;
+        }
+
+        .project-info {
+            padding: 22px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .project-info p {
+            color: #9eabbc;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .tags span {
+            display: inline-block;
+            background: #162a40;
+            color: #38bdf8;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin: 3px;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-box {
+            background: #101c2d;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #1e3047;
+        }
+
+        .skill-box h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .skill-box p {
+            color: #aab5c4;
+        }
+
+        /* EDUCATION */
+
+        .education-item {
+            border-left: 3px solid #38bdf8;
+            padding: 5px 0 5px 20px;
+            margin-bottom: 28px;
+        }
+
+        .education-item h3 {
+            font-size: 19px;
+        }
+
+        .education-item p {
+            color: #9eabbc;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            padding-bottom: 120px;
+        }
+
+        .contact p {
+            color: #aab5c4;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #1d2b3f;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        /* PHONE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            section {
+                padding: 65px 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Ezatullah Noori</h1>
+<nav>
+    <div class="nav-container">
+        <div class="logo">EN.</div>
 
-    <h2>Mechanical & Mechatronic Engineering Student</h2>
+        <div class="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#education">EDUCATION</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </div>
+</nav>
+
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            MECHANICAL • MECHATRONICS • ROBOTICS
+        </div>
+
+        <h1>Ezatullah<br>Noori</h1>
+
+        <h2>
+            Mechanical & Mechatronic Engineering Student
+        </h2>
+
+        <p>
+            I am an engineering student in Sydney with a strong interest in
+            mechanical design, mechatronics, robotics and automation.
+            I use this portfolio to document the systems I design, build,
+            program and test.
+        </p>
+
+        <div class="buttons">
+            <a href="#projects" class="button primary">
+                View My Projects
+            </a>
+
+            <a href="#contact" class="button secondary">
+                Contact Me
+            </a>
+        </div>
+
+    </div>
+
+</header>
+
+
+<section id="about" class="about">
+
+    <h2 class="section-title">
+        <span>01.</span> About Me
+    </h2>
 
     <p>
-        Welcome to my engineering portfolio.
-        I will use this website to document my mechanical,
-        mechatronic, robotics and automation projects.
+        I am currently studying Mechanical and Mechatronic Engineering at
+        the University of Technology Sydney. I have also completed technical
+        engineering qualifications through TAFE NSW. My interests include
+        mechanical design, CAD, embedded systems, sensors, actuators,
+        robotics, prototyping and engineering analysis.
     </p>
+
+</section>
+
+
+<section id="projects">
+
+    <h2 class="section-title">
+        <span>02.</span> Engineering Projects
+    </h2>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+
+            <div class="project-image">
+                PROJECT PHOTO COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <h3>Robotic Arm</h3>
+
+                <p>
+                    Multi-servo robotic arm project involving mechanical
+                    assembly, servo control and embedded programming.
+                </p>
+
+                <div class="tags">
+                    <span>Arduino</span>
+                    <span>C++</span>
+                    <span>Servo Motors</span>
+                    <span>Robotics</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="project-card">
+
+            <div class="project-image">
+                PROJECT PHOTO COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <h3>Mechanical Design & FEA</h3>
+
+                <p>
+                    Mechanical and structural design work using engineering
+                    calculations, CAD modelling and finite element analysis.
+                </p>
+
+                <div class="tags">
+                    <span>CAD</span>
+                    <span>FEA</span>
+                    <span>Mechanical Design</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="project-card">
+
+            <div class="project-image">
+                PROJECT PHOTO COMING SOON
+            </div>
+
+            <div class="project-info">
+
+                <h3>Embedded Control System</h3>
+
+                <p>
+                    Arduino-based control projects using sensors, displays,
+                    buttons, LEDs and non-blocking state-machine logic.
+                </p>
+
+                <div class="tags">
+                    <span>Arduino</span>
+                    <span>Sensors</span>
+                    <span>Embedded C++</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="skills">
+
+    <h2 class="section-title">
+        <span>03.</span> Technical Skills
+    </h2>
+
+    <div class="skills-grid">
+
+        <div class="skill-box">
+            <h3>CAD & Mechanical</h3>
+            <p>
+                Autodesk Inventor • SolidWorks • AutoCAD •
+                Engineering Drawings • FEA • Mechanical Design
+            </p>
+        </div>
+
+        <div class="skill-box">
+            <h3>Mechatronics</h3>
+            <p>
+                Arduino • Sensors • Servo Motors • Actuators •
+                Embedded Systems • Prototyping
+            </p>
+        </div>
+
+        <div class="skill-box">
+            <h3>Programming</h3>
+            <p>
+                C++ • Arduino C/C++ • Python • Java
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="education">
+
+    <h2 class="section-title">
+        <span>04.</span> Education
+    </h2>
+
+    <div class="education-item">
+        <h3>
+            Bachelor of Engineering (Honours) –
+            Mechanical & Mechatronic Engineering
+        </h3>
+        <p>University of Technology Sydney (UTS) • Current</p>
+    </div>
+
+    <div class="education-item">
+        <h3>
+            Advanced Diploma of Engineering – Mechanical
+        </h3>
+        <p>TAFE NSW</p>
+    </div>
+
+    <div class="education-item">
+        <h3>
+            Diploma of Engineering – Technical (Mechanical)
+        </h3>
+        <p>TAFE NSW</p>
+    </div>
+
+    <div class="education-item">
+        <h3>
+            Certificate III in Technical Engineering
+        </h3>
+        <p>TAFE NSW</p>
+    </div>
+
+</section>
+
+
+<section id="contact" class="contact">
+
+    <h2 class="section-title">
+        <span>05.</span> Contact
+    </h2>
+
+    <p>
+        I am interested in undergraduate engineering, internship,
+        engineering technician and junior engineering opportunities.
+    </p>
+
+    <a href="mailto:ezatnoori555@gmail.com"
+       class="button primary">
+        Email Me
+    </a>
+
+</section>
+
+
+<footer>
+    © 2026 Ezatullah Noori • Engineering Portfolio
+</footer>
 
 </body>
 </html>
